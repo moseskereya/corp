@@ -81,8 +81,10 @@ const Invite = asyncHandler(async (req, res) => {
 try {
     const { todoId } = req.params;
     const { recipientId } = req.body;
+
     // Find the todo by ID
     const todo = await Todo.findById(todoId);
+
     // Check if the todo exists
     if (!todo) {
       return res.status(404).json({ message: 'Todo not found' });
@@ -99,7 +101,7 @@ try {
       return res.status(404).json({ message: 'Recipient not found' });
     }
 
-    // Add the recipient to the collaborators array
+    // Add the recipient to the collaborators array if not already present
     if (!todo.collaborators.includes(recipientId)) {
       todo.collaborators.push(recipientId);
       await todo.save();

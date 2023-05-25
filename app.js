@@ -12,10 +12,11 @@ const cors = require('cors')
 ConnectDB();
 app.use(express.json())
 app.use(express.urlencoded({ extended: false })) 
+app.use(cors());
 
+app.options('*', cors());
 app.use('/api/todos', todo)
 
-app.use(cors());
 
 app.use('/api/users/register', register)
 app.use('/api/users', login)

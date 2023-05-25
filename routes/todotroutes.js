@@ -12,8 +12,4 @@ router.delete('/:id', protect, deleteTodo)
 
 
 
-
-
-
-
 module.exports = router

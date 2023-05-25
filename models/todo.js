@@ -1,7 +1,7 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
 const todoSchema = mongoose.Schema(
-   {
+  {
     user: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
@@ -11,10 +11,16 @@ const todoSchema = mongoose.Schema(
       type: String,
       required: [true, 'Please add a text value'],
     },
+    collaborators: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+      },
+    ],
   },
   {
     timestamps: true,
   }
-)
+);
 
-module.exports = mongoose.model('Todo', todoSchema)
+module.exports = mongoose.model('Todo', todoSchema);

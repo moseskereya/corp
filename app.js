@@ -15,12 +15,7 @@ app.use(express.urlencoded({ extended: false }))
 
 app.use('/api/todos', todo)
 
-app.use(cors({
-  allowedHeaders: 'Content-Type, Authorization',
-  origin: '*',
-  credentials: true,
-   methods:['POST', 'DELETE', 'GET', 'PUT', 'DELETE']
-}));
+app.use(cors());
 
 app.use('/api/users/register', register)
 app.use('/api/users', login)

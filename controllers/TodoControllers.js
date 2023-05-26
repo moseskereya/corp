@@ -73,9 +73,10 @@ const deleteTodo = asyncHandler(async (req, res) => {
     res.status(401)
     throw new Error('User not authorized')
   }
-  await todo.remove()
+  await Todo.findByIdAndRemove(req.params.id)
   res.status(200).json({ id: req.params.id })
 })
+
 
 const Invite = asyncHandler(async (req, res) => {
 try {

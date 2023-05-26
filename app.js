@@ -10,6 +10,7 @@ const todo = require('./routes/todotroutes');
 const cors = require('cors')
 
 ConnectDB();
+
 app.use(express.json())
 app.use(express.urlencoded({ extended: false })) 
 app.use(cors());
@@ -17,11 +18,11 @@ app.use(cors());
 app.options('*', cors());
 app.use('/api/todos', todo)
 
-
 app.use('/api/users/register', register)
 app.use('/api/users', login)
 app.use('/api/me', getMe)
 app.get('/', (req, res) => res.send('Welcome to the app'));
+
 const port = process.env.PORT || 8080;
 app.listen(port, () => console.log(`Server running on port ${port}`));
 
@@ -35,7 +36,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-app.post('/submit-form', (req, res) => {
+app.post('api/submit-form', (req, res) => {
   const { name, email } = req.body;
 
   const mailOptions = {
